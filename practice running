@@ -1,0 +1,18 @@
+ssh alp923@sol.cc.lehigh.edu
+password
+srun --partition=hawkcpu --nodes=1 --ntasks-per-node=1 --time=60 --pty /bin/bash
+.libPaths("/share/ceph/wym219group/shared/libraries/R")
+module load r
+R
+> library(rehh)
+> toyVCF <-"/share/ceph/wym219group/shared/data/1000Genomes/ToyVCFs/FADS1-3.HC3202_chr11.60799627-62891545.sub100.recode.vcf.gz"
+> GENOME.class <- readVCF(toyVCF, numcols=1000, tid="chr11", frompos=60799627, topos=62891545, approx=FALSE, out="", parallel=FALSE, gffpath=FALSE)
+#vcff::open : file opened, contains 100 samples
+#[1] "Available ContigIdentifiers (parameter tid):"
+#[1] "chr11"
+#|            :            |            :            | 100 %
+#|====================================================
+#
+#Concatenate regions 
+#|            :            |            :            | 100 %
+#|====================================================
